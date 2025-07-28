@@ -1,101 +1,165 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: "Rubik",sans-serif;
+    font-family: "Rubik", sans-serif;
 }
-body{
-    background-color: #d3e8f5;
-}
-.wrapper{
-    width: 85vw;
-    min-height: 50vmin;
-    padding: 50px 30px;
-    background-color: #ffffff;
-    position: absolute;
-    transform: translate(-50%,-50%);
-    top: 50%;
-    left: 50%;
-    border-radius: 10px;
-    box-shadow: 0 20px 35px rgba(0,0,0,0.15);
-    display: grid;
-    grid-template-columns: 5fr 7fr;
-}
-.editor{
-    min-height: 35vmin;
+
+body {
+    background: linear-gradient(to right, #e3f2fd, #f1f8e9);
+    min-height: 100vh;
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    gap: 20px;
-}
-.editor label{
-    font-size: 2.8vmin;
-    color: #2a292a;
-    font-weight: 400;
-}
-.editor input[type="range"]{
-    display: block;
-    width: 100%;
-    position: relative;
-    margin-top: 5px;
-}
-.flip-buttons{
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
-}
-.flip-buttons .flip-option{
-    margin-top: 10px;
-}
-.result{
-    position: relative;
-    display: flex;
-    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1200px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 30px;
+}
+
+.editor, .result {
+    display: flex;
+    flex-direction: column;
     gap: 20px;
 }
-.result img{
-    display: block;
-    position: relative;
-    max-width: calc(100% - 4vmin);
-    max-height: 45vmin;
-    margin: auto;
+
+.editor label {
+    font-size: 1rem;
+    color: #333;
 }
-.image-container{
-    display: none;
+
+.editor input[type="range"] {
+    width: 100%;
 }
-input[type="file"]{
-    display: none;
+
+.flip-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
-.result label{
-    display: block;
-    position: relative;
-    margin: 0 auto;
-    width: 220px;
-    background-color: #025bee;
-    color: #ffffff;
-    text-align: center;
-    padding: 16px 0;
+
+.flip-buttons .flip-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.edit-history {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.edit-history button,
+#download-btn,
+.result label {
+    padding: 12px;
+    border: none;
     border-radius: 5px;
-    font-size: 2.8vmin;
-    font-weight: 400;
+    font-size: 1rem;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
-@media screen and (max-width: 620px) {
-    .wrapper{
-        width: 95vw;
+
+.edit-history button {
+    background-color: #444;
+    color: white;
+}
+
+#download-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.result label {
+    background-color: #025bee;
+    color: white;
+    text-align: center;
+}
+
+.result img {
+    max-width: 100%;
+    max-height: 400px;
+    border-radius: 10px;
+}
+
+.image-container {
+    display: none;
+    text-align: center;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+#preview-thumbnails {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#preview-thumbnails img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    transition: border 0.2s;
+}
+
+#preview-thumbnails img:hover {
+    border-color: #025bee;
+}
+
+#drop-area {
+    border: 2px dashed #025bee;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s;
+}
+
+/* ----- Responsive Design ----- */
+@media screen and (max-width: 900px) {
+    .wrapper {
         grid-template-columns: 1fr;
-        padding: 30px 20px;
-        gap:  10px;
+        padding: 20px;
     }
-    .editor{
-        grid-row: 2;
+
+    .result img {
+        max-height: 300px;
     }
-    .flip-buttons{
+
+    .edit-history button,
+    #download-btn,
+    .result label {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .flip-buttons {
         flex-direction: row;
-        justify-content: space-between;
+        flex-wrap: wrap;
     }
-    .flip-buttons .flip-option{
-        margin-top: 0;
+
+    .flip-buttons .flip-option {
+        flex: 1 1 45%;
+    }
+
+    .editor label {
+        font-size: 0.9rem;
     }
 }
