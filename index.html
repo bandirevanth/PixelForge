@@ -2,10 +2,8 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Editor</title>
-    <!-- Google Fonts -->
+    <title>PixelForge</title>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
-    <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -27,6 +25,14 @@
                 <label for="sepia">Sepia</label>
                 <input type="range" min="0" max="100" value="0" id="sepia">
             </div>
+            <div class="filter">
+                <label for="brightness">Brightness</label>
+                <input type="range" min="0" max="200" value="100" id="brightness">
+            </div>
+            <div class="filter">
+                <label for="grayscale">Grayscale</label>
+                <input type="range" min="0" max="100" value="0" id="grayscale">
+            </div>
             <div class="flip-buttons">
                 <div class="flip-option">
                     <input type="radio" name="flip" id="no-flip" checked>
@@ -41,17 +47,25 @@
                     <label for="flip-y">Flip Vertical</label>
                 </div>
             </div>
+            <div class="edit-history">
+                <button onclick="undo()">Undo</button>
+                <button onclick="redo()">Redo</button>
+            </div>
         </div>
         <div class="result">
-            <figure class="image-container">
-                <img id="chosen-image">
-            </figure>
+            <div id="drop-area">
+                <p>Drag & drop an image here</p>
+                <figure class="image-container">
+                    <img id="chosen-image">
+                </figure>
+            </div>
             <input type="file" id="upload-button" accept="Image/*">
             <label for="upload-button">Choose An Image</label>
+            <button id="download-btn">Download Image</button>
+            <div id="preview-thumbnails"></div>
         </div>
+        <p>Made with ❤️ by Bandi Revanth.</p>
     </div>
-
-    <!-- Script -->
     <script src="script.js"></script>
 </body>
 </html>
